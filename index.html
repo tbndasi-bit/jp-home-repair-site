@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>JP Home Repair</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+/* Layout: one long page, cream ground, deep pine bands for hero/footer, oak accent. Placeholders are marked with a dashed oak underline so the owner can spot every word to replace. */
+:root{
+  --bg:#F6F1E6;        /* cream */
+  --bg-2:#EDE5D4;      /* darker cream, alternating bands */
+  --panel:#FFFCF5;     /* card surface */
+  --ink:#1E2A22;       /* near-black green */
+  --ink-2:#4A5A4F;     /* muted text */
+  --pine:#1F3D2F;      /* deep green */
+  --pine-2:#2B5240;    /* lighter green for hover */
+  --oak:#B8803A;       /* warm wood / brass accent */
+  --oak-2:#8F6128;     /* oak hover */
+  --line:#D9CEB8;      /* rules */
+  --on-pine:#F6F1E6;   /* text on green */
+  --ph:#B8803A;        /* placeholder mark */
+  --ph-bg:rgba(184,128,58,.10);
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --body:"Source Sans 3","Segoe UI",Arial,sans-serif;
+  --max:1120px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#141C17;--bg-2:#1A241E;--panel:#1F2B24;--ink:#EEE7D8;--ink-2:#B9B2A2;
+    --pine:#0F1F17;--pine-2:#1A3326;--oak:#D2A061;--oak-2:#E3B77C;--line:#2F3D34;
+    --on-pine:#EEE7D8;--ph:#D2A061;--ph-bg:rgba(210,160,97,.14);color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141C17;--bg-2:#1A241E;--panel:#1F2B24;--ink:#EEE7D8;--ink-2:#B9B2A2;
+  --pine:#0F1F17;--pine-2:#1A3326;--oak:#D2A061;--oak-2:#E3B77C;--line:#2F3D34;
+  --on-pine:#EEE7D8;--ph:#D2A061;--ph-bg:rgba(210,160,97,.14);color-scheme:dark;
+}
+*{box-sizing:border-box}
+figure,blockquote{margin:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--pine)}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1{font-size:clamp(2.3rem,5.2vw,4rem)}
+h2{font-size:clamp(1.8rem,3.4vw,2.6rem)}
+h3{font-size:1.25rem}
+p{margin:0}
+a{color:inherit}
+img{max-width:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+section{padding-block:clamp(56px,8vw,96px)}
+.band{background:var(--bg-2)}
+.eyebrow{font-family:var(--body);font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--oak);margin-bottom:14px}
+.lead{font-size:1.15rem;color:var(--ink-2);max-width:62ch}
+.sec-head{display:grid;gap:14px;max-width:70ch;margin-bottom:clamp(28px,4vw,48px)}
+
+/* placeholder marks */
+.ph{border-bottom:2px dashed var(--ph);background:var(--ph-bg);padding:0 .15em;border-radius:2px;cursor:help}
+body.clean .ph{border-bottom:0;background:none;padding:0;cursor:auto}
+body.clean .review{display:none}
+
+/* review bar */
+.review{background:var(--oak);color:#1E2A22;font-size:.92rem;font-weight:600}
+.review .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;padding-block:10px}
+.review button{font:inherit;font-weight:700;background:#1E2A22;color:#F6F1E6;border:0;border-radius:6px;padding:6px 12px;cursor:pointer;margin-left:auto}
+.review button:focus-visible{outline:3px solid #F6F1E6;outline-offset:2px}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--pine);color:var(--on-pine);border-bottom:1px solid rgba(255,255,255,.08)}
+header .wrap{display:flex;align-items:center;gap:22px;padding-block:14px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--display);font-weight:700;font-size:1.25rem;letter-spacing:.01em}
+.mark{width:40px;height:40px;border:2px solid var(--oak);border-radius:4px;display:grid;place-items:center;font-size:.95rem;color:var(--oak);font-weight:700;letter-spacing:.04em}
+.brand small{display:block;font-family:var(--body);font-weight:600;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+nav{display:flex;gap:22px;margin-left:auto;font-weight:600;font-size:.95rem}
+nav a{text-decoration:none;opacity:.88}
+nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--oak)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--body);font-weight:700;font-size:1rem;padding:13px 22px;border-radius:6px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+.btn-oak{background:var(--oak);color:#1E2A22;border-color:var(--oak)}
+.btn-oak:hover{background:var(--oak-2);border-color:var(--oak-2);color:#FFF8EA}
+.btn-ghost{background:transparent;color:var(--on-pine);border-color:rgba(255,255,255,.4)}
+.btn-ghost:hover{border-color:var(--on-pine)}
+.btn-pine{background:var(--pine);color:var(--on-pine);border-color:var(--pine)}
+.btn-pine:hover{background:var(--pine-2);border-color:var(--pine-2)}
+.btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--oak);outline-offset:2px}
+header .call{margin-left:0;white-space:nowrap}
+@media (max-width:860px){nav{display:none}header .call{margin-left:auto}}
+
+/* hero */
+.hero{background:var(--pine);color:var(--on-pine);padding-block:clamp(56px,9vw,120px);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:auto -10% -40% auto;width:60vw;max-width:720px;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(184,128,58,.22),transparent 65%);pointer-events:none}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;position:relative}
+.hero .eyebrow{color:var(--oak)}
+.hero p.lead{color:var(--on-pine);opacity:.86}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero-badges{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:30px;font-size:.92rem;font-weight:600;opacity:.9}
+.hero-badges span::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--oak);margin-right:8px;vertical-align:middle}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}}
+
+/* photo placeholders */
+.photo{position:relative;border-radius:8px;overflow:hidden;background:var(--panel);max-width:100%;box-shadow:0 18px 40px -24px rgba(0,0,0,.45)}
+.photo img{display:block;width:100%;height:100%;object-fit:cover}
+.photo .tag{position:absolute;left:10px;bottom:10px;background:var(--oak);color:#1E2A22;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 8px;border-radius:4px;border:1px dashed #1E2A22}
+body.clean .photo .tag{display:none}
+.hero .photo{aspect-ratio:4/5;min-height:300px;border:4px solid rgba(255,255,255,.08)}
+
+/* stats strip */
+.stats{background:var(--bg);border-bottom:1px solid var(--line)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding-block:0}
+.stat{padding:26px 20px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:0}
+.stat b{display:block;font-family:var(--display);font-size:2.2rem;font-weight:600;line-height:1;color:var(--pine);font-variant-numeric:tabular-nums}
+.stat span{display:block;margin-top:6px;font-size:.9rem;color:var(--ink-2);font-weight:600}
+@media (max-width:760px){.stats .wrap{grid-template-columns:1fr 1fr}.stat:nth-child(3){border-left:0}.stat{border-top:1px solid var(--line)}.stat:nth-child(-n+2){border-top:0}}
+
+/* services */
+.grid{display:grid;gap:22px;grid-template-columns:repeat(3,1fr)}
+@media (max-width:900px){.grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.grid{grid-template-columns:1fr}}
+.svc{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:26px 24px;display:grid;gap:12px;align-content:start;min-width:0}
+.svc .ico{width:44px;height:44px;border-radius:6px;background:var(--pine);display:grid;place-items:center}
+.svc .ico svg{width:24px;height:24px;stroke:var(--oak);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.svc p{color:var(--ink-2);font-size:.98rem}
+.svc ul{margin:4px 0 0;padding-left:18px;color:var(--ink-2);font-size:.92rem;line-height:1.6}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;counter-reset:step}
+@media (max-width:900px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}}
+.step{position:relative;padding-top:18px;border-top:3px solid var(--pine);min-width:0}
+.step::before{counter-increment:step;content:"0" counter(step);font-family:var(--display);font-size:2rem;color:var(--oak);display:block;line-height:1;margin-bottom:10px;font-variant-numeric:tabular-nums}
+.step h3{margin-bottom:8px}
+.step p{color:var(--ink-2);font-size:.98rem}
+
+/* projects */
+.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media (max-width:900px){.projects{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.projects{grid-template-columns:1fr}}
+.proj{display:grid;gap:10px;min-width:0;margin:0}
+.proj .photo{aspect-ratio:4/3}
+.proj .cap{display:flex;justify-content:space-between;gap:10px;font-size:.92rem}
+.proj .cap b{font-weight:700}
+.proj .cap span{color:var(--ink-2);text-align:right}
+
+/* reviews */
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media (max-width:900px){.reviews{grid-template-columns:1fr}}
+.rev{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:26px 24px;display:grid;gap:14px;align-content:start;min-width:0}
+.stars{color:var(--oak);letter-spacing:2px;font-size:1.05rem}
+.rev blockquote{margin:0;font-family:var(--display);font-size:1.12rem;line-height:1.4;font-weight:500}
+.rev .who{font-size:.92rem;color:var(--ink-2)}
+.rev .who b{color:var(--ink)}
+.rating{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin-top:26px;font-weight:600;color:var(--ink-2);font-size:.95rem}
+
+/* about */
+.about .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
+@media (max-width:860px){.about .wrap{grid-template-columns:1fr}}
+.about .photo{aspect-ratio:4/5}
+.about p+p{margin-top:14px}
+.promise{margin-top:26px;border-left:3px solid var(--oak);padding:4px 0 4px 18px;display:grid;gap:8px;font-size:.98rem}
+.team{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:560px){.team{grid-template-columns:1fr}}
+.team div{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:14px 16px;font-size:.95rem}
+.team b{display:block}
+.team span{color:var(--ink-2)}
+
+/* area */
+.area .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+@media (max-width:860px){.area .wrap{grid-template-columns:1fr}}
+.towns{display:grid;grid-template-columns:1fr 1fr;gap:6px 24px;margin:18px 0 0;padding:0;list-style:none;font-weight:600}
+.towns li::before{content:"";display:inline-block;width:6px;height:6px;background:var(--oak);margin-right:10px;vertical-align:middle;transform:rotate(45deg)}
+.map{max-width:100%;aspect-ratio:1;width:100%}
+.map text{font-family:var(--body);font-size:13px;font-weight:600;fill:var(--ink)}
+.map .ring{fill:rgba(184,128,58,.10);stroke:var(--oak);stroke-dasharray:5 5;stroke-width:1.5}
+.map .dot{fill:var(--pine)}
+.map .hq{fill:var(--oak);stroke:var(--pine);stroke-width:3}
+.map .road{stroke:var(--line);stroke-width:2;fill:none}
+.map .rlabel{font-size:11px;fill:var(--ink-2);font-weight:600}
+
+/* contact */
+.contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+@media (max-width:860px){.contact .wrap{grid-template-columns:1fr}}
+form{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:28px 26px;display:grid;gap:16px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:560px){.row{grid-template-columns:1fr}}
+label{display:grid;gap:6px;font-weight:600;font-size:.9rem}
+input,select,textarea{font:inherit;font-size:1rem;padding:11px 12px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);width:100%;min-width:0}
+textarea{min-height:110px;resize:vertical}
+.note{font-size:.85rem;color:var(--ink-2)}
+.ok{display:none;background:var(--pine);color:var(--on-pine);padding:14px 16px;border-radius:6px;font-weight:600}
+.details{display:grid;gap:22px;margin-top:26px}
+.details div b{display:block;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--oak);margin-bottom:4px}
+.details div span{font-size:1.05rem;font-weight:600}
+.details small{display:block;color:var(--ink-2);font-size:.92rem;font-weight:400}
+
+/* footer */
+footer{background:var(--pine);color:var(--on-pine);padding-block:44px;font-size:.92rem}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+@media (max-width:760px){footer .wrap{grid-template-columns:1fr}}
+footer .brand{margin-bottom:12px}
+footer p{opacity:.8;max-width:40ch}
+footer h4{margin:0 0 10px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--oak)}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+footer a{text-decoration:none;opacity:.85}
+footer a:hover{opacity:1;text-decoration:underline}
+.legal{border-top:1px solid rgba(255,255,255,.12);margin-top:36px;padding-top:18px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;opacity:.7;font-size:.85rem}
+footer .ph{color:var(--on-pine)}
+</style>
+</head>
+<body>
+
+
+<div class="review" id="reviewbar">
+  <div class="wrap">
+    <span>Draft for review, prepared Oct 23 2026.</span>
+    <span>Words with a <span class="ph">dashed underline</span> and photos tagged "stock photo" are placeholders. Text or call Tamon with anything to change.</span>
+    <button type="button" id="cleanToggle">Hide placeholder marks</button>
+  </div>
+</div>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="mark">JP</span>
+      <span>JP Home Repair<small>Nacogdoches, Texas</small></span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#projects">Projects</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#about">About</a>
+      <a href="#area">Service area</a>
+    </nav>
+    <a class="btn btn-oak call" href="#contact">Free estimate</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Licensed and insured remodeling in the oldest town in Texas</div>
+      <h1>Kitchens, baths and additions built to last in East Texas.</h1>
+      <p class="lead" style="margin-top:18px">JP Home Repair LLC remodels homes across Nacogdoches County, from the brick-street historic district to the lake. One crew, one fixed quote, one owner on site.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-oak" href="#contact">Request a free estimate</a>
+        <a class="btn btn-ghost" href="#projects">See recent projects</a>
+      </div>
+      <div class="hero-badges">
+        <span>Licensed and insured</span>
+        <span><span class="ph">2-year</span> workmanship warranty</span>
+        <span>Fixed-price quotes</span>
+        <span>Owner on every job</span>
+      </div>
+    </div>
+    <div class="photo"><img src="img/hero.jpg" alt="Remodeled kitchen with white cabinets and a dark island" width="1000" height="1250"><span class="tag">Stock photo, replace with yours</span></div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b><span class="ph">12</span>+</b><span>Years serving Nacogdoches</span></div>
+    <div class="stat"><b><span class="ph">340</span>+</b><span>Projects completed</span></div>
+    <div class="stat"><b><span class="ph">5.0</span></b><span>Google rating, <span class="ph">48</span> reviews</span></div>
+    <div class="stat"><b><span class="ph">2</span>-yr</b><span>Workmanship warranty</span></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">What we build</div>
+      <h2>Remodeling for the way East Texas homes are built.</h2>
+      <p class="lead">Pier-and-beam floors, pine framing, red clay and humid summers call for work done the local way. Every job below comes with a written scope and a fixed price before we start.</p>
+    </div>
+    <div class="grid">
+      <article class="svc">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 12h18M9 12v8M15 4v8"/></svg></div>
+        <h3>Kitchen remodels</h3>
+        <p>Cabinets, counters, islands, lighting and plumbing moved to where you cook. Full tear-outs and refreshes.</p>
+        <ul><li>Custom and semi-custom cabinetry</li><li>Quartz, granite and butcher block</li><li>Layout changes with permits pulled</li></ul>
+      </article>
+      <article class="svc">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M6 12V6a2 2 0 0 1 4 0"/><path d="M8 19v2M16 19v2"/></svg></div>
+        <h3>Bathroom remodels</h3>
+        <p>Walk-in showers, tubs, tile, vanities and ventilation that keeps up with East Texas humidity.</p>
+        <ul><li>Curbless and tiled showers</li><li>Aging-in-place grab bars and benches</li><li>Moisture-rated drywall and exhaust</li></ul>
+      </article>
+      <article class="svc">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V9l6-5 6 5v12"/><path d="M15 21h6v-8h-6"/><path d="M7 21v-5h4v5"/></svg></div>
+        <h3>Room additions</h3>
+        <p>Bedrooms, in-law suites, home offices and garage conversions, tied into the existing roof line and foundation.</p>
+        <ul><li>Slab and pier-and-beam foundations</li><li>Matched siding, brick and roofing</li><li>City of Nacogdoches permits handled</li></ul>
+      </article>
+      <article class="svc">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10 12 3l9 7"/><path d="M5 9v12h14V9"/><path d="M9 21v-6h6v6"/></svg></div>
+        <h3>Whole-home renovations</h3>
+        <p>Open a floor plan, replace flooring throughout, update every room at once with one schedule and one point of contact.</p>
+        <ul><li>Load-bearing wall removal with engineering</li><li>Electrical and plumbing updates</li><li>Flooring, paint and trim throughout</li></ul>
+      </article>
+      <article class="svc">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 13h20"/><path d="M4 13v8M20 13v8M8 13V8l4-3 4 3v5"/><path d="M4 17h16"/></svg></div>
+        <h3>Porches, decks and outdoor living</h3>
+        <p>Screened porches, covered patios and decks built for mosquito season and summer evenings under the pines.</p>
+        <ul><li>Screened and covered porches</li><li>Composite and treated-pine decks</li><li>Outdoor kitchens and fans</li></ul>
+      </article>
+      <article class="svc">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21h16"/><path d="M6 21V8l6-4 6 4v13"/><path d="M10 21v-4h4v4M10 12h4"/></svg></div>
+        <h3>Historic home restoration</h3>
+        <p>Careful work on the older homes around Virginia Avenue, Washington Square and Zion Hill, keeping original trim and windows where they can be saved.</p>
+        <ul><li>Pier-and-beam leveling and sill repair</li><li>Window and millwork restoration</li><li>Historic-district review assistance</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">How a project runs</div>
+      <h2>Four steps from first visit to final walk-through.</h2>
+      <p class="lead">No surprises on price or schedule. You see the number before demolition starts, and the same crew sees the job through.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Walk-through</h3><p>We visit your home, measure, and talk through what you want. Same-week scheduling in Nacogdoches, free of charge.</p></div>
+      <div class="step"><h3>Design and fixed quote</h3><p>You get a written scope, material selections and one price. Changes are priced in writing before they happen.</p></div>
+      <div class="step"><h3>Build</h3><p>Permits pulled, dust walls up, a daily tidy-up and a text update at the end of every work day.</p></div>
+      <div class="step"><h3>Walk-through and warranty</h3><p>We go through every item with you, fix anything on the list, then hand you the <span class="ph">2-year</span> workmanship warranty in writing.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Recent work</div>
+      <h2>Projects around Nacogdoches County.</h2>
+      <p class="lead">Finished kitchens, baths, porches and whole-home updates, each with the job and the neighborhood.</p>
+    </div>
+    <div class="projects">
+      <figure class="proj"><div class="photo"><img src="img/p1-kitchen.jpg" alt="Kitchen remodel with marble island and light wood floor" loading="lazy" width="900" height="675"><span class="tag">Stock photo</span></div><figcaption class="cap"><b><span class="ph">Kitchen remodel</span></b><span class="ph">Virginia Avenue</span></figcaption></figure>
+      <figure class="proj"><div class="photo"><img src="img/p2-bath.jpg" alt="Bathroom with double vanity and walk-in shower" loading="lazy" width="900" height="675"><span class="tag">Stock photo</span></div><figcaption class="cap"><b><span class="ph">Master bath</span></b><span class="ph">Lake Nacogdoches</span></figcaption></figure>
+      <figure class="proj"><div class="photo"><img src="img/p3-porch.jpg" alt="Screened porch with chairs" loading="lazy" width="900" height="675"><span class="tag">Stock photo</span></div><figcaption class="cap"><b><span class="ph">Screened porch</span></b><span class="ph">Appleby</span></figcaption></figure>
+      <figure class="proj"><div class="photo"><img src="img/p4-office.jpg" alt="Garage converted to a home office" loading="lazy" width="900" height="675"><span class="tag">Stock photo</span></div><figcaption class="cap"><b><span class="ph">Garage conversion</span></b><span class="ph">Near SFA campus</span></figcaption></figure>
+      <figure class="proj"><div class="photo"><img src="img/p5-living.jpg" alt="Renovated living room with fireplace" loading="lazy" width="900" height="675"><span class="tag">Stock photo</span></div><figcaption class="cap"><b><span class="ph">Whole-home update</span></b><span class="ph">Garrison</span></figcaption></figure>
+      <figure class="proj"><div class="photo"><img src="img/p6-historic.jpg" alt="Restored craftsman porch on a yellow house" loading="lazy" width="900" height="675"><span class="tag">Stock photo</span></div><figcaption class="cap"><b><span class="ph">1920s porch restoration</span></b><span class="ph">Washington Square</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="reviews">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">What neighbors say</div>
+      <h2>Reviews from Nacogdoches homeowners.</h2>
+    </div>
+    <div class="reviews">
+      <article class="rev">
+        <div class="stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote><span class="ph">"They gutted our 1960s kitchen and had us cooking again in four weeks, right on the quoted price. The crew swept up every single evening."</span></blockquote>
+        <div class="who"><b><span class="ph">Customer name</span></b><br><span class="ph">Kitchen remodel, North Street area</span></div>
+      </article>
+      <article class="rev">
+        <div class="stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote><span class="ph">"Our old house on Virginia Avenue needed sill repair and a new bath. They saved the original windows and matched the trim. You cannot tell where old ends and new begins."</span></blockquote>
+        <div class="who"><b><span class="ph">Customer name</span></b><br><span class="ph">Historic restoration, Virginia Avenue</span></div>
+      </article>
+      <article class="rev">
+        <div class="stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote><span class="ph">"Screened porch out at the lake, done before Memorial Day like they promised. We live out there now."</span></blockquote>
+        <div class="who"><b><span class="ph">Customer name</span></b><br><span class="ph">Screened porch, Lake Nacogdoches</span></div>
+      </article>
+    </div>
+    <div class="rating">
+      <span><span class="ph">5.0</span> on Google from <span class="ph">48</span> reviews</span>
+      <span>&middot;</span>
+      <a href="#contact"><span class="ph">Link to the Google Business profile</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="photo"><img src="img/owner.jpg" alt="Justino Ponce, owner of JP Home Repair, on a job site" loading="lazy" width="900" height="1125"><span class="tag">Stock photo, replace with Justino&#39;s photo</span></div>
+    <div>
+      <div class="eyebrow">About the company</div>
+      <h2>Locally owned by Justino Ponce, working out of Nacogdoches since <span class="ph">2014</span>.</h2>
+      <p class="lead" style="margin-top:18px">Justino Ponce started JP Home Repair LLC after <span class="ph">15</span> years framing and finishing homes across Deep East Texas. The company stays small on purpose: Justino quotes every job himself and is on site for the parts that matter.</p>
+      <p><span class="ph">Second paragraph placeholder: where the owner grew up, family, church or community ties, what he is known for in town.</span></p>
+      <div class="promise">
+        <span>Licensed and insured in Texas, license <span class="ph">#000000</span></span>
+        <span>General liability <span class="ph">$1,000,000</span> and workers' compensation on every job</span>
+        <span>Member, <span class="ph">Nacogdoches County Chamber of Commerce</span></span>
+      </div>
+      <div class="team">
+        <div><b>Justino Ponce</b><span>Owner and lead carpenter</span></div>
+        <div><b><span class="ph">Team member name</span></b><span>Project manager</span></div>
+        <div><b><span class="ph">Team member name</span></b><span>Tile and finish carpentry</span></div>
+        <div><b><span class="ph">Team member name</span></b><span>Office and scheduling</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band area" id="area">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Where we work</div>
+      <h2>Nacogdoches and about 35 miles around it.</h2>
+      <p class="lead" style="margin-top:14px">Based at <span class="ph">1234 North Street</span>, Nacogdoches, TX 75961. Free estimates in the towns below. Farther out, ask: we take larger projects across Deep East Texas.</p>
+      <ul class="towns">
+        <li>Nacogdoches</li><li>Lufkin</li>
+        <li>Appleby</li><li>Garrison</li>
+        <li>Cushing</li><li>Chireno</li>
+        <li>Douglass</li><li>Etoile</li>
+        <li>Martinsville</li><li>Woden</li>
+        <li>Center</li><li>Alto</li>
+        <li>Huntington</li><li>San Augustine</li>
+      </ul>
+    </div>
+    <svg class="map" viewBox="0 0 420 420" role="img" aria-label="Schematic map of the service area around Nacogdoches">
+      <circle class="ring" cx="210" cy="210" r="175"/>
+      <path class="road" d="M150 10 L210 210 L250 410"/>
+      <path class="road" d="M10 150 L210 210 L410 240"/>
+      <path class="road" d="M210 210 L395 60"/>
+      <text class="rlabel" x="152" y="40">US 259</text>
+      <text class="rlabel" x="24" y="140">SH 21</text>
+      <text class="rlabel" x="340" y="80">SH 7</text>
+      <text class="rlabel" x="258" y="395">US 59</text>
+      <circle class="hq" cx="210" cy="210" r="9"/>
+      <text x="224" y="206" style="font-size:15px;font-weight:700">Nacogdoches</text>
+      <circle class="dot" cx="236" cy="350" r="5"/><text x="246" y="355">Lufkin</text>
+      <circle class="dot" cx="190" cy="150" r="5"/><text x="200" y="146">Appleby</text>
+      <circle class="dot" cx="160" cy="70" r="5"/><text x="170" y="66">Garrison</text>
+      <circle class="dot" cx="90" cy="110" r="5"/><text x="100" y="106">Cushing</text>
+      <circle class="dot" cx="320" cy="280" r="5"/><text x="330" y="285">Chireno</text>
+      <circle class="dot" cx="120" cy="230" r="5"/><text x="60" y="250">Douglass</text>
+      <circle class="dot" cx="330" cy="340" r="5"/><text x="340" y="345">Etoile</text>
+      <circle class="dot" cx="340" cy="130" r="5"/><text x="300" y="120">Martinsville</text>
+      <circle class="dot" cx="270" cy="270" r="5"/><text x="280" y="275">Woden</text>
+      <circle class="dot" cx="370" cy="60" r="5"/><text x="330" y="48">Center</text>
+      <circle class="dot" cx="60" cy="290" r="5"/><text x="70" y="295">Alto</text>
+    </svg>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Free estimate</div>
+      <h2>Tell us about the project. We call back the same business day.</h2>
+      <div class="details">
+        <div><b>Call or text</b><span class="ph">(936) 555-0100</span><small>Mon to Fri 7:30 AM to 6 PM, Sat 8 AM to noon</small></div>
+        <div><b>Email</b><span class="ph">estimates@jphomerepair.com</span></div>
+        <div><b>Shop</b><span><span class="ph">1234 North Street</span>, Nacogdoches, TX 75961</span><small>By appointment. Estimates happen at your home.</small></div>
+        <div><b>Serving</b><span>Nacogdoches County and neighbors, about 35 miles out</span></div>
+      </div>
+    </div>
+    <form id="estimate" novalidate>
+      <div class="row">
+        <label>Name <input id="f-name" name="name" type="text" autocomplete="name" required></label>
+        <label>Phone <input id="f-phone" name="phone" type="tel" autocomplete="tel" required></label>
+      </div>
+      <div class="row">
+        <label>Email <input id="f-email" name="email" type="email" autocomplete="email"></label>
+        <label>Town <input id="f-town" name="town" type="text" value="Nacogdoches"></label>
+      </div>
+      <label>Project type
+        <select id="f-type" name="type">
+          <option>Kitchen remodel</option><option>Bathroom remodel</option><option>Room addition</option>
+          <option>Whole-home renovation</option><option>Porch, deck or outdoor living</option><option>Historic home restoration</option><option>Something else</option>
+        </select>
+      </label>
+      <label>Tell us about it <textarea id="f-msg" name="message" placeholder="Rooms involved, rough timing, anything we should know about the house."></textarea></label>
+      <label>Best time to call
+        <select id="f-time" name="time"><option>Morning</option><option>Midday</option><option>Afternoon</option><option>Evening</option></select>
+      </label>
+      <button class="btn btn-pine" type="submit">Request my free estimate</button>
+      <div class="ok" id="ok">Received. Expect a call from Justino Ponce within one business day.</div>
+      <p class="note">Preview only: on the live site this form sends to the owner's email and phone. We never share your details.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="brand" href="#top"><span class="mark">JP</span><span>JP Home Repair LLC<small>Nacogdoches, Texas</small></span></a>
+      <p>Kitchen, bath, addition and whole-home remodeling for Nacogdoches County and Deep East Texas. Licensed and insured. Fixed-price quotes.</p>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul><li><a href="#services">Kitchen remodels</a></li><li><a href="#services">Bathroom remodels</a></li><li><a href="#services">Room additions</a></li><li><a href="#services">Whole-home renovations</a></li><li><a href="#services">Porches and decks</a></li><li><a href="#services">Historic restoration</a></li></ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><span class="ph">(936) 555-0100</span></li>
+        <li><span class="ph">estimates@jphomerepair.com</span></li>
+        <li><span class="ph">1234 North Street</span>, Nacogdoches, TX 75961</li>
+        <li><a href="#contact"><span class="ph">Facebook</span></a> &middot; <a href="#contact"><span class="ph">Instagram</span></a> &middot; <a href="#contact"><span class="ph">Google</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap legal">
+    <span>&copy; 2026 JP Home Repair LLC. Texas license <span class="ph">#000000</span>.</span>
+    <span>Website by <span class="ph">Your company name</span></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('cleanToggle');
+  var clean=false;
+  try{clean=localStorage.getItem('jp-clean')==='1';}catch(e){}
+  function apply(){document.body.classList.toggle('clean',clean);btn.textContent=clean?'Show placeholder marks':'Hide placeholder marks';}
+  apply();
+  btn.addEventListener('click',function(){clean=!clean;try{localStorage.setItem('jp-clean',clean?'1':'0');}catch(e){}apply();});
+  var form=document.getElementById('estimate'),ok=document.getElementById('ok');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=document.getElementById('f-name'),phone=document.getElementById('f-phone');
+    if(!name.value.trim()){name.focus();return;}
+    if(!phone.value.trim()){phone.focus();return;}
+    ok.style.display='block';ok.scrollIntoView({block:'nearest'});
+  });
+})();
+</script>
+
+</body>
+</html>
